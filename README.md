@@ -1,2 +1,2 @@
 # YelpCamp
- :) My solution/version of Colt's YelpCamp Project for WebDev Bootcamp
+ :) My Practice code for Colt's YelpCamp Project(Udemy WebDev Bootcamp)
