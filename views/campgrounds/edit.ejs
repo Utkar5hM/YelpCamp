@@ -2,28 +2,32 @@
 <div class="row">
     <h1 class="text-center">Edit Campground</h1>
     <div class="col-6 offset-3">
-        <form action="/campgrounds/<%=campground._id%>?_method=PUT" method="POST">
+        <form action="/campgrounds/<%=campground._id%>?_method=PUT" method="POST" novalidate class="needs-validation">
             <div class='mb-3' >
                 <label class="form-label"  for="title">Title</label>
-                <input class="form-control" type="text" id="title" value="<%= campground.title %>" name="campground[title]">
+                <input class="form-control" type="text" id="title" value="<%= campground.title %>" name="campground[title]" required>
+                <div class="valid-feedback">Looks Good</div>
             </div>
             <div class='mb-3'>
                 <label class="form-label" for="location">location</label>
-                <input class="form-control" type="text" value="<%= campground.location %>" id="location" name="campground[location]">
+                <input class="form-control" type="text" value="<%= campground.location %>" id="location" name="campground[location]" required>
+                <div class="valid-feedback">Looks Good</div>
             </div>
             <div class='mb-3'>
                 <label class="form-label" for="image">Image URL</label>
-                <input class="form-control" type="text" value="<%= campground.image %>" id="image" name="campground[image]">
+                <input class="form-control" type="text" value="<%= campground.image %>" id="image" name="campground[image]" required>
+                <div class="valid-feedback">Looks Good</div>
             </div>
             <div class="mb-3">
                 <label for="description" class="form-label">Description</label>
-                <textarea class="form-control" id="description" rows="3" name="campground[description]"><%= campground.description %></textarea>
-              </div>
+                <textarea class="form-control" id="description" rows="3" name="campground[description]" required><%= campground.description %></textarea>
+                <div class="valid-feedback">Looks Good</div>
+            </div>
               <div class="mb-3">
                   <label for="price">Campground Price</label>
                 <div class="input-group mb-3">
                     <span class="input-group-text" id="price-label">₹(INR)</span>
-                    <input type="text" id="name" name="campground[price]" value="<%= campground.price %>" class="form-control" placeholder="0"  aria-label="price" aria-describedby="price-label">
+                    <input type="text" id="name" name="campground[price]" value="<%= campground.price %>" required class="form-control" placeholder="0"  aria-label="price" aria-describedby="price-label">
                   </div>                  
               </div>
             <div class="mb-3">
@@ -36,3 +40,9 @@
 
 
 
+<div class="alert alert-success" role="alert">
+    <h4 class="alert-heading">Well done!</h4>
+    <p>Aww yeah, you successfully read this important alert message. This example text is going to run a bit longer so that you can see how spacing within an alert works with this kind of content.</p>
+    <hr>
+    <p class="mb-0">Whenever you need to, be sure to use margin utilities to keep things nice and tidy.</p>
+  </div>
