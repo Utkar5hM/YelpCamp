@@ -15,3 +15,5 @@ const marker1 = new mapboxgl.Marker()
             )
     )
     .addTo(map);
+
+console.log(campgrounds);
