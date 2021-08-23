@@ -5,7 +5,7 @@ style: 'mapbox://styles/mapbox/streets-v11', // style URL
 center: coordinates, // starting position [lng, lat]
 zoom: 9 // starting zoom
 });
-
+map.addControl(new mapboxgl.NavigationControl());
 const marker1 = new mapboxgl.Marker()
     .setLngLat(coordinates)
     .setPopup(
