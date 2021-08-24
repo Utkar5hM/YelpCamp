@@ -1,16 +1,16 @@
 mapboxgl.accessToken = mapAccessToken;
-const map = new mapboxgl.Map({
+const cMap = new mapboxgl.Map({
 container: 'clustermap',
-style: 'mapbox://styles/mapbox/light-v10',
+style: 'mapbox://styles/mapbox/dark-v10',
 center: [-103.5917, 40.6699],
 zoom: 3
 });
-map.addControl(new mapboxgl.NavigationControl());
-map.on('load', () => {
+cMap.addControl(new mapboxgl.NavigationControl());
+cMap.on('load', () => {
 // Add a new source from our GeoJSON data and
 // set the 'cluster' option to true. GL-JS will
 // add the point_count property to your source data.
-map.addSource('campgrounds', {
+cMap.addSource('campgrounds', {
 type: 'geojson',
 // Point to GeoJSON data. This example visualizes all M1.0+ earthquakes
 // from 12/22/15 to 1/21/16 as logged by USGS' Earthquake hazards program.
@@ -20,7 +20,7 @@ clusterMaxZoom: 14, // Max zoom to cluster points on
 clusterRadius: 50 // Radius of each cluster when clustering points (defaults to 50)
 });
  
-map.addLayer({
+cMap.addLayer({
 id: 'clusters',
 type: 'circle',
 source: 'campgrounds',
@@ -52,7 +52,7 @@ paint: {
 }
 });
  
-map.addLayer({
+cMap.addLayer({
 id: 'cluster-count',
 type: 'symbol',
 source: 'campgrounds',
@@ -64,7 +64,7 @@ layout: {
 }
 });
  
-map.addLayer({
+cMap.addLayer({
 id: 'unclustered-point',
 type: 'circle',
 source: 'campgrounds',
@@ -78,8 +78,8 @@ paint: {
 });
  
 // inspect a cluster on click
-map.on('click', 'clusters', (e) => {
-const features = map.queryRenderedFeatures(e.point, {
+cMap.on('click', 'clusters', (e) => {
+const features = cMap.queryRenderedFeatures(e.point, {
 layers: ['clusters']
 });
 const clusterId = features[0].properties.cluster_id;
@@ -88,7 +88,7 @@ clusterId,
 (err, zoom) => {
 if (err) return;
  
-map.easeTo({
+cMap.easeTo({
 center: features[0].geometry.coordinates,
 zoom: zoom
 });
@@ -100,7 +100,7 @@ zoom: zoom
 // the unclustered-point layer, open a popup at
 // the location of the feature, with
 // description HTML from its properties.
-map.on('click', 'unclustered-point', (e) => {
+cMap.on('click', 'unclustered-point', (e) => {
 const coordinates = e.features[0].geometry.coordinates.slice();
 const popUpMarkUp = e.features[0].properties.popUpMarkUp;
 const tsunami =
@@ -118,14 +118,14 @@ new mapboxgl.Popup()
 .setHTML(
     popUpMarkUp
 )
-.addTo(map);
+.addTo(cMap);
 });
  
-map.on('mouseenter', 'clusters', () => {
-map.getCanvas().style.cursor = 'pointer';
+cMap.on('mouseenter', 'clusters', () => {
+cMap.getCanvas().style.cursor = 'pointer';
 });
-map.on('mouseleave', 'clusters', () => {
-map.getCanvas().style.cursor = '';
+cMap.on('mouseleave', 'clusters', () => {
+cMap.getCanvas().style.cursor = '';
 
 });
 });

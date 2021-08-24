@@ -89,8 +89,8 @@
         </div>
     </div>
     <script >
-      let mapAccessToken= '<%- process.env.MAPBOX_TOKEN %>';
+      let mapAccessTokenSM= '<%- process.env.MAPBOX_TOKEN %>';
       let coordinates = [<%- campground.geometry.coordinates %>];
-      let campground = <%- JSON.stringify(campground) %>;
+       let campground = <%- JSON.stringify(campground) %>;
     </script>
     <script src="/javascripts/ShowMap.js"></script>

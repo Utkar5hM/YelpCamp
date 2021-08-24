@@ -1,4 +1,4 @@
-mapboxgl.accessToken = mapAccessToken;
+mapboxgl.accessToken = mapAccessTokenSM;
 const map = new mapboxgl.Map({
 container: 'map', // container ID
 style: 'mapbox://styles/mapbox/streets-v11', // style URL
@@ -15,5 +15,3 @@ const marker1 = new mapboxgl.Marker()
             )
     )
     .addTo(map);
-
-console.log(campgrounds);
