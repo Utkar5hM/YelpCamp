@@ -70,7 +70,6 @@ const MongoStore = require('connect-mongo')(session);
 const flash = require('connect-flash')
 const Joi =require('joi')
 const {campgroundSchema, reviewSchema} = require('./schemas')
-const catchAsync = require('./utils/catchAsync')
 const Campground =require('./models/campground')
 const methodOverride = require('method-override')
 const ExpressError=  require('./utils/ExpressError')
@@ -166,9 +165,9 @@ app.get('/', (req,res)=>{
     res.render('home');
 })
 
-app.all('*', (req,res,next)=>{
+/* app.all('*', (req,res,next)=>{
     next(new ExpressError('Page Not Found', 404))
-})
+}) */
 app.use((err,req,res,next)=>{
     const {statusCode=500, message="something went wrong"} =err;
     if(!err.message) err.message = "Oh no,Something went wrong."
